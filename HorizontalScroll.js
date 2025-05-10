@@ -1,3 +1,6 @@
+gsap.registerPlugin(ScrollTrigger);
+
+
 const container = document.querySelectorAll(".container");
 const items = document.querySelectorAll(".js-item");
 
