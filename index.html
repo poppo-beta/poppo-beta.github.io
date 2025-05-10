@@ -64,24 +64,14 @@
     const container = document.querySelector(".container");
     const sections = gsap.utils.toArray(".item");
 
-    gsap.set(container, {
-      width: items.length * 100 + "%"
-    });
-    
-    gsap.set(items, {
-      width: 100 / items.length + "%"
-    });
-
     gsap.to(container, {
-      xPercent: -100 * (items.length - 1),
+      yPercent: -100 * (sections.length - 1),
       ease: "none",
       scrollTrigger: {
         trigger: ".wrapper",
-        start: "top top",
-        end: () => container.scrollWidth - window.innerWidth,
-        scrub: true,
         pin: true,
-        anticipatePin: 1
+        scrub: 1,
+        end: () => "+=" + container.offsetWidth
       }
     });
   </script>
