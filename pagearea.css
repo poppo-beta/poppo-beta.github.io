@@ -3,7 +3,6 @@
 }
 .container {
   display: flex;
-  height: 1000vh;
 }
 .item {
   height: 1000vh;
