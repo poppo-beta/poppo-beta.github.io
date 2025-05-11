@@ -85,6 +85,10 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
   <script>
+    // Gsapの Gsap target not found という謎エラーを消す
+    gsap.config({
+     nullTargetWarn: false,
+    });
     gsap.registerPlugin(ScrollTrigger);
 
     const container = document.querySelector(".container");
@@ -105,21 +109,21 @@
 
     console.log("data-parallax-front属性を持つ要素数:", items.length);
 
-// 各要素に対して処理を行う
-for (const item of items) {
-  const y = item.getAttribute("data-y") ?? "15%"; // itemのdata-y属性を取得。未設定の場合は'15%'をデフォルト値として使用
-  const delay = parseFloat(item.getAttribute("data-delay")) || 0.4; // itemのdata-delay属性を数値に変換して取得。未設定の場合は'0.4'をデフォルト値として使用
-  const target = item.children; // itemの直下の要素を取得
+    // 各要素に対して処理を行う
+    for (const item of items) {
+      const y = item.getAttribute("data-y") ?? "15%"; // itemのdata-y属性を取得。未設定の場合は'15%'をデフォルト値として使用
+      const delay = parseFloat(item.getAttribute("data-delay")) || 0.4; // itemのdata-delay属性を数値に変換して取得。未設定の場合は'0.4'をデフォルト値として使用
+      const target = item.children; // itemの直下の要素を取得
 
-  gsap.fromTo(
-    // gsap.fromToでアニメーションを設定
-    target, // 対象の要素をtargetで指定
-    {
-      y: y // アニメーション開始時のy位置
-    },
-    {
-      y: `-${y}`, // アニメーション終了時のy位置
-      scrollTrigger: {
+      gsap.fromTo(
+        // gsap.fromToでアニメーションを設定
+      target, // 対象の要素をtargetで指定
+      {
+        y: y // アニメーション開始時のy位置
+      },
+      {
+        y: `-${y}`, // アニメーション終了時のy位置
+        scrollTrigger: {
         // スクロールトリガーを設定
         trigger: item, // itemをトリガーとなる要素として指定
         start: "top bottom", // 要素の上端がビューポートの下端に達したときに開始
