@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ホームページテスト</title>
   <style>
     * {
@@ -24,7 +24,31 @@
 
     .container {
       display: flex;
+      flex-direction: column;
+    }
+
+    .title {
+      position: relative;
+      width: 100vw;
       height: 100vh;
+      overflow: hidden;
+    }
+
+    .title img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    .title img.absolute01 {
+      mix-blend-mode: multiply;
+    }
+    
+    .title img.absolute02 {
+      mix-blend-mode: multiply;
     }
 
     .page {
@@ -38,40 +62,19 @@
       color: #fff;
     }
 
-    .title{
-      mix-blend-mode: multiply;
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-    }
-    
-    .absolute01{
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      object-fit: cover;
-    }
-    
-    .absolute02{
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      object-fit: cover;
-    }
-
-    .page:nth-child(1) { background: #0CABA8; }
-    .page:nth-child(2) { background: #008F8C; }
-    .page:nth-child(3) { background: #015958; }
-    .page:nth-child(4) { background: #023535; }
+    .page:nth-child(2) { background: #0CABA8; }
+    .page:nth-child(3) { background: #008F8C; }
+    .page:nth-child(4) { background: #015958; }
+    .page:nth-child(5) { background: #023535; }
   </style>
 </head>
 <body>
   <div class="wrapper">
     <div class="container">
+      <!-- タイトルページ：画像重ね -->
       <div class="title">
-        <img src="images/bsck.PNG" class="absolute01">
-        <img src="images/1.PNG" class="absolute02">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80" class="absolute01" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Human_silhouette.svg/800px-Human_silhouette.svg.png" class="absolute02" />
       </div>
       <div class="page">1</div>
       <div class="page">2</div>
@@ -80,15 +83,14 @@
     </div>
   </div>
 
-  <!-- GSAP + ScrollTrigger CDN -->
+  <!-- GSAP + ScrollTrigger -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
     const container = document.querySelector(".container");
-    const sections = gsap.utils.toArray(".page");
+    const sections = gsap.utils.toArray(".title, .page");
 
     gsap.to(container, {
       yPercent: -100 * (sections.length - 1),
