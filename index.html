@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>画像重ね表示（CDN版）</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ホームページテスト</title>
   <style>
     * {
       margin: 0;
@@ -12,8 +13,8 @@
     }
 
     body {
-      overflow-x: hidden;
       font-family: sans-serif;
+      overflow-x: hidden;
     }
 
     .wrapper {
@@ -22,41 +23,80 @@
     }
 
     .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .item {
       width: 100vw;
       height: 100vh;
-      position: relative;
+      flex: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: #fff;
     }
 
-    .container img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .container img.fg {
+    .item titlecontainer{
       mix-blend-mode: multiply;
+      position: relative;
+      width: 100vw;
+      height: 100vh;
     }
+    
+    .item titlecontainer.absolute01{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+    
+    .item titlecontainer.absolute02{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+
+    .item:nth-child(1) { background: #0CABA8; }
+    .item:nth-child(2) { background: #008F8C; }
+    .item:nth-child(3) { background: #015958; }
+    .item:nth-child(4) { background: #023535; }
   </style>
 </head>
 <body>
   <div class="wrapper">
     <div class="container">
-      <!-- 背景画像（風景） -->
-      <img
-        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80"
-        alt="背景"
-        class="bg"
-      />
-      <!-- 前景画像（シルエットPNG） -->
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Human_silhouette.svg/800px-Human_silhouette.svg.png"
-        alt="前景"
-        class="fg"
-      />
+      <div class="titlecontainer">
+        <img src="images/bsck.PNG" class="absolute01">
+        <img src="images/1.PNG" class="absolute02">
+      </div>
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
     </div>
   </div>
+
+  <!-- GSAP + ScrollTrigger CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const container = document.querySelector(".container");
+    const sections = gsap.utils.toArray(".item");
+
+    gsap.to(container, {
+      yPercent: -100 * (sections.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".wrapper",
+        pin: true,
+        scrub: 1,
+        end: () => "+=" + container.offsetWidth
+      }
+    });
+  </script>
 </body>
 </html>
