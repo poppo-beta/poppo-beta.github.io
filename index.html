@@ -41,12 +41,29 @@
       object-fit: cover;
     }
 
-    .title img.absolute01 {
+    .title img.absoluteback {
       mix-blend-mode: multiply;
     }
-    
+    .title img.absolute01 {
+      mix-blend-mode: normal;
+    }
     .title img.absolute02 {
       mix-blend-mode: normal;
+    }
+    .title img.absolute03 {
+      mix-blend-mode: hard-light;
+    }
+    .title img.absolute04 {
+      mix-blend-mode: normal;
+    }
+    .title img.absolute05 {
+      mix-blend-mode: hard-light;
+    }
+    .title img.absolute06 {
+      mix-blend-mode: normal;
+    }
+    .title img.absolute07 {
+      mix-blend-mode: hard-light;
     }
 
     .page {
@@ -71,9 +88,27 @@
     <div class="container">
       <!-- タイトルページ：画像重ね -->
       <div class="title">
-        <img src="images/bsck.PNG" class="absolute01" />
-        <div  data-parallax-front data-y="2%">
+        <img src="images/bsck.PNG" class="absoluteback" />
+        <div  data-parallax-front data-y="1%">
           <img src="images/1.PNG" class="absolute01"/>
+        </div>
+        <div  data-parallax-front data-y="2%">
+          <img src="images/2.PNG" class="absolute02"/>
+        </div>
+        <div  data-parallax-front data-y="3%">
+          <img src="images/3_light.PNG" class="absolute03"/>
+        </div>
+        <div  data-parallax-front data-y="4%">
+          <img src="images/4.PNG" class="absolute04"/>
+        </div>
+        <div  data-parallax-front data-y="5%">
+          <img src="images/5_light.PNG" class="absolute05"/>
+        </div>
+        <div  data-parallax-front data-y="6%">
+          <img src="images/6.PNG" class="absolute06"/>
+        </div>
+        <div  data-parallax-front data-y="7%">
+          <img src="images/7_light.PNG" class="absolute07"/>
         </div>
       </div>
       <div class="page">1</div>
