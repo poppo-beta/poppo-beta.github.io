@@ -113,16 +113,17 @@
       const delay = parseFloat(item.getAttribute("data-delay")) || 0.4; // itemのdata-delay属性を数値に変換して取得。未設定の場合は'0.4'をデフォルト値として使用
       const target = item.children; // itemの直下の要素を取得
 
+      console.log("アニメーション開始時のy位置:", y);
+      console.log("アニメーション終了時のy位置:", `-${y}`);
+
       gsap.fromTo(
         // gsap.fromToでアニメーションを設定
       target, // 対象の要素をtargetで指定
       {
         y: y // アニメーション開始時のy位置
-        console.log("アニメーション開始時のy位置:", y);
       },
       {
         y: `-${y}`, // アニメーション終了時のy位置
-        console.log("アニメーション終了時のy位置:", `-${y}`);
         scrollTrigger: {
         // スクロールトリガーを設定
         trigger: item, // itemをトリガーとなる要素として指定
