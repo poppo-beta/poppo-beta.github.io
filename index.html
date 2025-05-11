@@ -41,16 +41,12 @@
       object-fit: cover;
     }
 
-    .title box {
+    .box {
       position: absolute;
-      width: 100vw;
+      width: 100%;
       height: 50px;
       background-color: #b0c4de;
       object-fit: cover;
-    }
-
-    .title box.top {
-      mix-blend-mode: normal;
     }
     .title img.absoluteback {
       mix-blend-mode: multiply;
@@ -132,11 +128,13 @@
           <img src="images/6.PNG" class="absolute06"/>
         </div>
         <!-- 一番上のレイヤーの上下にマスクをくっつける -->
-        <div class="top"></div>
+        
         <div  data-parallax-front data-y="6%">
+          <div class="box top-box"></div>
           <img src="images/7_light.PNG" class="absolute07"/>
+          <div class="box bottom-box"></div>
         </div>
-        <div class="top"></div>
+        
       </div>
       <div class="page">2</div>
       <div class="page">3</div>
