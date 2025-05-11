@@ -107,8 +107,6 @@
 
     const items = document.querySelectorAll("[data-parallax-front]"); // data-parallax-front属性を持つ要素を取得
 
-    console.log("data-parallax-front属性を持つ要素数:", items.length);
-
     // 各要素に対して処理を行う
     for (const item of items) {
       const y = item.getAttribute("data-y") ?? "15%"; // itemのdata-y属性を取得。未設定の場合は'15%'をデフォルト値として使用
@@ -120,9 +118,11 @@
       target, // 対象の要素をtargetで指定
       {
         y: y // アニメーション開始時のy位置
+        console.log("アニメーション開始時のy位置:", y);
       },
       {
         y: `-${y}`, // アニメーション終了時のy位置
+        console.log("アニメーション終了時のy位置:", `-${y}`);
         scrollTrigger: {
         // スクロールトリガーを設定
         trigger: item, // itemをトリガーとなる要素として指定
