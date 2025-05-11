@@ -147,7 +147,7 @@
     // 各要素に対して処理を行う
     for (const item of items) {
       const y = item.getAttribute("data-y") ?? "15%"; // itemのdata-y属性を取得。未設定の場合は'15%'をデフォルト値として使用
-      const delay = parseFloat(item.getAttribute("data-delay")) || 0.0; // itemのdata-delay属性を数値に変換して取得。未設定の場合は'0.4'をデフォルト値として使用
+      const delay = parseFloat(item.getAttribute("data-delay")) || 1.0; // itemのdata-delay属性を数値に変換して取得。未設定の場合は'0.4'をデフォルト値として使用
       const target = item.children; // itemの直下の要素を取得
 
       console.log("アニメーション開始時のy位置:", y);
