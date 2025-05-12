@@ -153,10 +153,8 @@
      nullTargetWarn: false,
     });
     gsap.registerPlugin(ScrollTrigger);
-
     const container = document.querySelector(".container");
     const sections = gsap.utils.toArray(".title, .page");
-
     gsap.to(container, {
       yPercent: -100 * (sections.length - 1),
       ease: "none",
@@ -166,18 +164,13 @@
         scrub: 1,
         end: () => "+=" + container.offsetHeight
       }
-    });
-    
+    });    
     const items = document.querySelectorAll("[data-parallax-front]"); // data-parallax-front属性を持つ要素を取得
     // 各要素に対して処理を行う
     for (const item of items) {
       const y = item.getAttribute("data-y") ?? "15%"; // itemのdata-y属性を取得。未設定の場合は'15%'をデフォルト値として使用
       const delay = parseFloat(item.getAttribute("data-delay")) || 1.0; // itemのdata-delay属性を数値に変換して取得。未設定の場合は'0.4'をデフォルト値として使用
       const target = item.children; // itemの直下の要素を取得
-
-      console.log("アニメーション開始時のy位置:", y);
-      console.log("アニメーション終了時のy位置:", `-${y}`);
-
       gsap.fromTo(
         // gsap.fromToでアニメーションを設定
         target, // 対象の要素をtargetで指定
